@@ -76,13 +76,13 @@ const Header = () => {
             },
             {
                 callback: () => navigate('/addproject'),
-                title: 'Proje girişi yap',
+                title: 'Proje Girişi Yap',
                 image: './assets/02.png',
                 glyph: 'cloud'
             },
             {
                 callback: () => alert(`Seçildi!`),
-                title: 'Günlük Üretim girişi işle',
+                title: 'Günlük Üretim Girişi İşle',
                 image: './assets/03.png',
                 glyph: 'business-objects-experience'
             },
@@ -94,13 +94,13 @@ const Header = () => {
             },
             {
                 callback: () => alert(`Seçildi!`),
-                title: 'Projelerde güncelleme yap',
+                title: 'Projelerde Güncelleme Yap',
                 image: './assets/05.png',
                 glyph: 'message-success'
             },
             {
                 callback: () => alert(`Seçildi!`),
-                title: 'Muhasebe işlemleri yap',
+                title: 'Muhasebe İşlemleri Yap',
                 image: './assets/06.png',
                 glyph: 'retail-store'
             },
