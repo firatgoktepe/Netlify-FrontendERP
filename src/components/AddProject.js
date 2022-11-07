@@ -29,15 +29,41 @@ const AddProject = ({ onAdd }) => {
   const refreshProjects = () => {
     API.get("/")
       .then((res) => {
-        setProjects(res.data);
+        setProjects(res.data.data);
       })
       .catch(console.error);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let item = { code, name, location, area, surface_app, point_area, delivery_date, ral_code, pipe_time, node_time, point_time, pipe_dict, node_dict, pipe_point_dict };
-    API.post("/", item).then(() => refreshProjects());
+  
+    API.post("/", {"data": {"code": code, "name": name, "location": location, "area": area,
+    "surface_app": surface_app,
+    "point_area": point_area,
+    "delivery_date": delivery_date,
+    "ral_code": ral_code,
+    "pipe_time": pipe_time,
+    "node_time": node_time,
+    "point_time": point_time,
+    "pipe_dict": pipe_dict,
+    "node_dict": node_dict,
+    "pipe_point_dict": pipe_point_dict}}).then(() => {
+      refreshProjects()
+      setCode("");
+      setName("");
+      setLocation("");
+      setArea("");
+      setSurfaceApp("");
+      setPointArea("");
+      setDeliveryDate("");
+      setRalCode("");
+      setPipeTime("");
+      setNodeTime("");
+      setPointTime("");
+      setPipeDict("");
+      setNodeDict("");
+      setPipePointDict("");
+    });
   };
 
   const onUpdate = (id) => {
@@ -51,21 +77,21 @@ const AddProject = ({ onAdd }) => {
 
   function selectProject(id) {
     let item = projects.filter((project) => project.id === id)[0];
-    setCode(item.code);
-    setName(item.name);
-    setLocation(item.location);
-    setArea(item.area);
-    setSurfaceApp(item.surface_app);
-    setPointArea(item.point_area);
-    setDeliveryDate(item.delivery_date);
-    setRalCode(item.ral_code);
-    setPipeTime(item.pipe_time);
-    setNodeTime(item.node_time);
-    setPointTime(item.point_time);
-    setPipeDict(item.pipe_dict);
-    setNodeDict(item.node_dict);
-    setPipePointDict(item.pipe_point_dict);
-    setProjectId(item.id);
+    setCode(item.attributes.code);
+    setName(item.attributes.name);
+    setLocation(item.attributes.location);
+    setArea(item.attributes.area);
+    setSurfaceApp(item.attributes.surface_app);
+    setPointArea(item.attributes.point_area);
+    setDeliveryDate(item.attributes.delivery_date);
+    setRalCode(item.attributes.ral_code);
+    setPipeTime(item.attributes.pipe_time);
+    setNodeTime(item.attributes.node_time);
+    setPointTime(item.attributes.point_time);
+    setPipeDict(item.attributes.pipe_dict);
+    setNodeDict(item.attributes.node_dict);
+    setPipePointDict(item.attributes.pipe_point_dict);
+    setProjectId(item.attributes.id);
   }
 
 
@@ -267,20 +293,20 @@ const AddProject = ({ onAdd }) => {
                 return (
                   <tr key={index}>
                     <th scope="row">-</th>
-                    <td>{project.code}</td>
-                    <td> {project.name}</td>
-                    <td>{project.location}</td>
-                    <td>{project.area}</td>
-                    <td>{project.surface_app}</td>
-                    <td>{project.point_area}</td>
-                    <td>{project.delivery_date}</td>
-                    <td>{project.ral_code}</td>
-                    <td>{project.pipe_time}</td>
-                    <td>{project.node_time}</td>
-                    <td>{project.point_time}</td>
-                    <td>{project.pipe_dict}</td>
-                    <td>{project.node_dict}</td>
-                    <td>{project.pipe_point_dict}</td>
+                    <td>{project.attributes.code}</td>
+                    <td> {project.attributes.name}</td>
+                    <td>{project.attributes.location}</td>
+                    <td>{project.attributes.area}</td>
+                    <td>{project.attributes.surface_app}</td>
+                    <td>{project.attributes.point_area}</td>
+                    <td>{project.attributes.delivery_date}</td>
+                    <td>{project.attributes.ral_code}</td>
+                    <td>{project.attributes.pipe_time}</td>
+                    <td>{project.attributes.node_time}</td>
+                    <td>{project.attributes.point_time}</td>
+                    <td>{project.attributes.pipe_dict}</td>
+                    <td>{project.attributes.node_dict}</td>
+                    <td>{project.attributes.pipe_point_dict}</td>
                     <td>
                       <i
                         className="fa fa-pencil-square text-primary d-inline"

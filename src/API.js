@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: "http://127.0.0.1:8000/projects",
+    baseURL: "https://strapi-production-f824.up.railway.app/api/projects",
     headers: {
         'Accept':'application/json',
         'Content-Type':'application/json',
