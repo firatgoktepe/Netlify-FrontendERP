@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ListGroup, Card, Button, Form } from "react-bootstrap";
 import API from "../API";
 import 'font-awesome/css/font-awesome.min.css';
@@ -67,8 +67,19 @@ const AddProject = ({ onAdd }) => {
   };
 
   const onUpdate = (id) => {
-    let item = { name };
-    API.patch(`/${id}/`, item).then((res) => refreshProjects());
+    let item = {"data": {"code": code, "name": name, "location": location, "area": area,
+    "surface_app": surface_app,
+    "point_area": point_area,
+    "delivery_date": delivery_date,
+    "ral_code": ral_code,
+    "pipe_time": pipe_time,
+    "node_time": node_time,
+    "point_time": point_time,
+    "pipe_dict": pipe_dict,
+    "node_dict": node_dict,
+    "pipe_point_dict": pipe_point_dict}};
+    API.put(`/${id}/`, item).then((res) => refreshProjects());
+    updateElement.current.disabled = false;
   };
 
   const onDelete = (id) => {
@@ -92,8 +103,10 @@ const AddProject = ({ onAdd }) => {
     setNodeDict(item.attributes.node_dict);
     setPipePointDict(item.attributes.pipe_point_dict);
     setProjectId(item.attributes.id);
+    updateElement.current.disabled = true;
   }
 
+  const updateElement = useRef();
 
   return (
     <div className="container mt-5">
@@ -248,6 +261,7 @@ const AddProject = ({ onAdd }) => {
 
             <div className="float-right">
               <Button
+                ref={updateElement}
                 variant="primary"
                 type="submit"
                 onClick={onSubmit}
@@ -255,14 +269,13 @@ const AddProject = ({ onAdd }) => {
               >
                 Kaydet
               </Button>
-              <Button
+              {/* <Button
                 variant="primary"
                 type="button"
-                onClick={() => onUpdate(projectId)}
                 className="mx-2"
               >
                 Güncelle
-              </Button>
+              </Button> */}
             </div>
           </Form>
         </div>
@@ -317,6 +330,11 @@ const AddProject = ({ onAdd }) => {
                         className="fa fa-trash-o text-danger d-inline mx-3"
                         aria-hidden="true"
                         onClick={() => onDelete(project.id)}
+                      ></i>
+                      <i
+                        className="fa fa-wrench text-primary d-inline"
+                        aria-hidden="true"
+                        onClick={() => onUpdate(project.id)}
                       ></i>
                     </td>
                   </tr>
