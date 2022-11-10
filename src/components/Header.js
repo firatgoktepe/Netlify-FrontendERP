@@ -141,7 +141,7 @@ const Header = () => {
             //     glyph: 'customer'
             // }
         ]}
-        productTitle='Arda ERP'
+        productTitle='USKON ERP'
         profile={profile}
         profileMenu={profileMenu}
         searchInput={{
