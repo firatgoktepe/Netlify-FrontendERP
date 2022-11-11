@@ -12,6 +12,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
+    "react-modal-video": "^1.2.10",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "victory": "^36.6.8",
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "css-loader": "^6.7.1",
     "font-awesome": "^4.7.0"
   }
 }

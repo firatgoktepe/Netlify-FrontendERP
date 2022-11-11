@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Wizard } from 'fundamental-react/lib/Wizard';
 import Header from './Header';
+import ModalVideo from 'react-modal-video'
+
+const ModalVideoFunction = () => {
+    const [isOpen, setOpen] = useState(false)
+
+	return (
+		<React.Fragment>
+			<ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="g5LYwcEKurY" onClose={() => setOpen(false)} />
+
+			<button className="btn-primary" onClick={()=> setOpen(true)}>Demoyu izle</button>
+		</React.Fragment>
+	)
+}
 
 const Home = () => {
 
@@ -21,7 +34,7 @@ const Home = () => {
         headerSize='sm'
         nextLabel='İleri'
         onCancel={() => alert('Wizard iptal edildi')}
-        onComplete={() => alert('Wizard bitti')}
+        onComplete={() => alert('Wizard Tamamlandı')}
         style={{ height: '20rem', padding: '1rem' }}>
         <Wizard.Step title="Standart Zaman Girişi Yap">
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
@@ -45,7 +58,8 @@ const Home = () => {
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
         </Wizard.Step>
         <Wizard.Step nextLabel='Bitti' title="Endüstriyel Üretim">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <ModalVideoFunction/>
         </Wizard.Step>
     </Wizard>
     </div>

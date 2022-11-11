@@ -1,3 +1,4 @@
+@import '../node_modules/react-modal-video/scss/modal-video.scss';
 .App {
   text-align: center;
 }
@@ -64,7 +65,11 @@ a {
     transform: rotate(360deg);
   }
 }
-
+/* Modal video iframe*/
+.modal-video-movie-wrap iframe {
+  width: 100%;
+  height: 520px;
+}
 /* Chart headings */
 .chartHeadings {
 
