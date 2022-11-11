@@ -64,3 +64,9 @@ a {
     transform: rotate(360deg);
   }
 }
+
+/* Chart headings */
+.chartHeadings {
+
+  margin-top: 2rem;
+}

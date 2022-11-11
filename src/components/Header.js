@@ -87,7 +87,7 @@ const Header = () => {
                 glyph: 'business-objects-experience'
             },
             {
-                callback: () => alert(`Seçildi!`),
+                callback: () => navigate('/add-projects-status-report'),
                 title: 'Projeler Durum Raporu Al',
                 image: './assets/04.png',
                 glyph: 'activate'
