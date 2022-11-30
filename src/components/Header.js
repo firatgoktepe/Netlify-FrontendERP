@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <Shellbar
         logoSAP
-        backAction={() => navigate(-1)}
+        backAction={() => navigate('/')}
         className="mb-5 p-5"
         size="xl"
         localizedText={{backButtonLabel: 'Geri',
@@ -67,11 +67,18 @@ const Header = () => {
         }}
         productSwitchList={[
             {
+                callback: () => navigate('/dashboard'),
+                title: 'Kontrol Paneli',
+                subtitle: 'Kontrol paneliniden uygulamanı yönetebilirsiniz.',
+                image: './assets/01.png',
+                selected: true,
+                glyph: 'globe'
+            },
+            {
                 callback: () => alert(`Seçildi!`),
                 title: 'Standart Zaman Girişi Yap',
                 subtitle: 'Veritabanı',
                 image: './assets/01.png',
-                selected: true,
                 glyph: 'home'
             },
             {
