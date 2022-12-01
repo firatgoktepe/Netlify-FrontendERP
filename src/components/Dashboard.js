@@ -20,7 +20,7 @@ const Dashboard = () => {
   return (
     <div className="container mt-5">
       <Header />
-      <main className="bg-[#F9FAFB]">
+      <main>
         <Title>Kontrol Paneli</Title>
         <Text>USKON ERP için satış ve büyüme verileri</Text>
         <TabList defaultValue={ 1 } handleSelect={ (value) => setSelectedView(value) } marginTop="mt-6">
