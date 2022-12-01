@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import Header from './Header'
 import {
   Card,
@@ -8,37 +9,37 @@ import {
   TabList,
   ColGrid,
   Block,
-  Flex,
-  Metric,
-  BadgeDelta,
-  ProgressBar,
 } from '@tremor/react';
 
+import Cards from "./Dashboard-Components/Cards";
+import FirstContainer from "./Dashboard-Components/FirstContainer";
+import SecondContainer from "./Dashboard-Components/SecondContainer";
+
 const Dashboard = () => {
+  const [selectedView, setSelectedView] = useState(1);
   return (
-    <>
-        <Header />
-        <div className="container">
-            <div className="row">
-                <div>Dashboard</div>
-                <Card maxWidth="max-w-lg">
-                  <Flex alignItems="items-start">
-                    <Block>
-                      <Text>Sales</Text>
-                      <Metric>$ 20,699</Metric>
-                    </Block>
-                    <BadgeDelta deltaType="moderateDecrease" text="13.2%" />
-                  </Flex>
-                  <Flex marginTop="mt-4">
-                    <Text truncate={true}>50% ($ 110,250)</Text>
-                    <Text> $ 220,500 </Text>
-                  </Flex>
-                  <ProgressBar percentageValue={50} marginTop="mt-2" />
-                </Card>
-            </div>
-        </div>
-    </>
-  )
+    <div className="container mt-5">
+      <Header />
+      <main className="bg-[#F9FAFB]">
+        <Title>Kontrol Paneli</Title>
+        <Text>USKON ERP için satış ve büyüme verileri</Text>
+        <TabList defaultValue={ 1 } handleSelect={ (value) => setSelectedView(value) } marginTop="mt-6">
+            <Tab value={ 1 } text="Genel" />
+            <Tab value={ 2 } text="Performans" />
+        </TabList>
+    
+        { selectedView === 1 ? (
+            <>
+              <Cards />
+              <FirstContainer />
+            </>
+           ) : (
+              <SecondContainer />
+            ) }
+      </main>
+    </div>
+    
+      );
 }
 
 export default Dashboard
