@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import { Routes, Route } from "react-router-dom";
 import './App.css';
+import "@tremor/react/dist/esm/tremor.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddProject from './components/AddProject'
 import Home from './components/Home'
