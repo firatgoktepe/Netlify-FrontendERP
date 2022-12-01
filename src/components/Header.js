@@ -71,7 +71,6 @@ const Header = () => {
                 title: 'Kontrol Paneli',
                 subtitle: 'Kontrol paneliniden uygulamanı yönetebilirsiniz.',
                 image: './assets/01.png',
-                selected: true,
                 glyph: 'globe'
             },
             {
